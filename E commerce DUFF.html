@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Card Shop</title>
+  <style>
+    /* styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      background-color: #fff;
+      flex: 0 0 200px;
+      text-align: center;
+      position: relative;
+      height: 100%;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .card-buttons {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+
+    .card button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .card button:hover {
+      background-color: #555;
+    }
+
+    footer {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pokémon Card Shop</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <div class="card">
+      <img src="p1.jpg" alt="Pokémon Card 1">
+      <h3>1996 Pokémon Japanese Base Set Holo Venusaur</h3>
+      <p>Value: $55,000 </p>
+      <div>
+        <label for="quantity1">Quantity:</label>
+        <input type="number" id="quantity1" min="1" value="1" onchange="updateTotal('Holo Venusaur', 'quantity1', 55000)">
+      </div>
+      <div>
+        <label>Total:</label>
+        <span id="total1">$55,000</span>
+      </div>
+      <button onclick="addToCart('Holo Venusaur', document.getElementById('quantity1').value, 55000)">Add to Cart</button>
+    </div>
+    
+    <div class="card">
+      <img src="p2.jpg" alt="Pokémon Card 2">
+      <h3>1998 Pokemon Japanese Promo Tamamushi University Prize Magikarp</h3>
+      <p>Value: $78,000</p>
+      <div>
+        <label for="quantity2">Quantity:</label>
+        <input type="number" id="quantity2" min="1" value="1" onchange="updateTotal('Prize Magikarp', 'quantity2', 78000)">
+      </div>
+      <div>
+        <label>Total:</label>
+        <span id="total2">$78,000</span>
+      </div>
+      <button onclick="addToCart('Prize Magikarp', document.getElementById('quantity2').value, 78000)">Add to Cart</button>
+    </div>
+    
+    <div class="card">
+      <img src="p3.png" alt="Pokémon Card 3">
+      <h3>1998 Trophy Pikachu Gold</h3>
+      <p>Value: $128,900</p>
+      <div>
+        <label for="quantity3">Quantity:</label>
+        <input type="number" id="quantity3" min="1" value="1" onchange="updateTotal('Trophy Pikachu Gold', 'quantity3', 128900)">
+      </div>
+      <div>
+        <label>Total:</label>
+        <span id="total3">$128,900</span>
+      </div>
+      <button onclick="addToCart('Trophy Pikachu Gold', document.getElementById('quantity3').value, 128900)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="p4.jpg" alt="Pokémon Card 4">
+      <h3>1999 Pokemon Base Set Shadowless 1st Edition Holo Charizard</h3>
+      <p>Value: $420,000</p>
+      <div>
+        <label for="quantity4">Quantity:</label>
+        <input type="number" id="quantity4" min="1" value="1" onchange="updateTotal('Shadowless Charizard', 'quantity4', 420000)">
+      </div>
+      <div>
+        <label>Total:</label>
+        <span id="total4">$420,000</span>
+      </div>
+      <button onclick="addToCart('Shadowless Charizard', document.getElementById('quantity4').value, 420000)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="p5.jpg" alt="Pokémon Card 5">
+      <h3>1999 Pokemon Japanese Promo Tropical Mega Battle Tropical Wind Trophy Card</h3>
+      <p>Value: $65,100</p>
+      <div>
+        <label for="quantity5">Quantity:</label>
+        <input type="number" id="quantity5" min="1" value="1" onchange="updateTotal('Tropical Mega Battle Card', 'quantity5', 65100)">
+      </div>
+      <div>
+        <label>Total:</label>
+        <span id="total5">$65,100</span>
+      </div>
+      <button onclick="addToCart('Tropical Mega Battle Card', document.getElementById('quantity5').value, 65100)">Add to Cart</button>
+    </div>
+    
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 Pokémon Card Shop. All rights reserved.</p>
+  </footer>
+
+  <script>
+  function addToCart(cardName, quantity, price) {
+    const total = quantity * price;
+    alert("Added " + quantity + "x " + cardName + " to the cart!\nTotal: $" + total.toLocaleString());
+    // Perform additional logic here, such as updating the shopping cart
+  }
+
+  function updateTotal(cardName, quantityId, price) {
+    const quantityInput = document.getElementById(quantityId);
+    const quantity = quantityInput.value;
+    const total = quantity * price;
+    const totalElement = document.getElementById('total' + quantityId.substring(8));
+    totalElement.textContent = '$' + total.toLocaleString();
+  }
+</script>
+</body>
+</html>
